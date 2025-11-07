@@ -1,4 +1,5 @@
 #include "main.h"
+#include "autons.hpp"
 
 /////
 // For installation, upgrading, documentations, and tutorials, check out our website!
@@ -6,9 +7,9 @@
 /////
 
 // These are out of 127
-const int DRIVE_SPEED = 110;
+const int DRIVE_SPEED = 127;
 const int TURN_SPEED = 90;
-const int SWING_SPEED = 110;
+const int SWING_SPEED = 127;
 
 ///
 // Constants
@@ -260,13 +261,13 @@ void odom_drive_example() {
 void odom_pure_pursuit_example() {
   // Drive to 0, 30 and pass through 6, 10 and 0, 20 on the way, with slew
   chassis.pid_odom_set({{{6_in, 10_in}, fwd, DRIVE_SPEED},
-                        {{0_in, 20_in}, fwd, DRIVE_SPEED},
-                        {{0_in, 30_in}, fwd, DRIVE_SPEED}},
+                        {{3_in, 15_in}, fwd, DRIVE_SPEED},
+                        {{0_in, 20_in}, fwd, DRIVE_SPEED}},
                        true);
   chassis.pid_wait();
 
   // Drive to 0, 0 backwards
-  chassis.pid_odom_set({{0_in, 0_in}, rev, DRIVE_SPEED},
+  chassis.pid_odom_set({{0_in, 0_in,}, rev, DRIVE_SPEED},
                        true);
   chassis.pid_wait();
 }
@@ -373,6 +374,15 @@ void measure_offsets() {
   if (chassis.odom_tracker_front != nullptr) chassis.odom_tracker_front->distance_to_center_set(f_offset);
 }
 
+void ballrush()
+{
+}
 // . . .
 // Make your own autonomous functions here!
 // . . .
+
+void ballRush() {
+  chassis.pid_odom_set({{12_in, 12_in}, fwd, DRIVE_SPEED});
+
+  chassis.pid_odom_set({{12_in, 12_in, 90_deg}, fwd, DRIVE_SPEED});
+}

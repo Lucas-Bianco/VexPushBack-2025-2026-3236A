@@ -138,7 +138,7 @@ void measure_offsets() {
 // Make your own autonomous functions here!
 // . . .
 
-void ballRush() {
+void ballrush() {
   chassis.pid_odom_set({{12_in, 12_in}, fwd, DRIVE_SPEED});
 
   chassis.pid_odom_set({{12_in, 12_in, 90_deg}, fwd, DRIVE_SPEED});

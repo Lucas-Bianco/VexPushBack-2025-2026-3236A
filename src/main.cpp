@@ -11,7 +11,7 @@ ez::Drive chassis(
     {-11, 12, -13},     // Left Chassis Ports (negative port will reverse it!)
     {18, -19, 20},  // Right Chassis Ports (negative port will reverse it!)
 
-    10,      // IMU Port
+    7,      // IMU Port
     2.75,  // Wheel Diameter (Remember, 4" wheels without screw holes are actually 4.125!)
     360);   // Wheel RPM = cartridge * (motor gear / wheel gear)
 
@@ -227,9 +227,13 @@ void ez_template_extras() {
  * operator control task will be stopped. Re-enabling the robot will restart the
  * task, not resume it from where it left off.
  */
+
 void opcontrol() {
   // This is preference to what you like to drive on
   chassis.drive_brake_set(MOTOR_BRAKE_COAST);
+
+  // Boolean for if the intake is spinning
+  bool intake_running = false;
 
   while (true) {
     // Gives you some extras to make EZ-Template ezier
@@ -244,9 +248,26 @@ void opcontrol() {
     // . . .
     // Put more user control code here!
     // . . .
+    
+    // Set intake_running to the opposite of itself
+    if (master.get_digital_new_press(DIGITAL_L1)) {
+      intake_running = !intake_running;
+    }
 
+    // Spin the intake if intake_running is true
+    if (intake_running) {
+      intake.move(127);
+    }
+    // Stop the intake if intake_running is false 
+    else {
+      intake.move(0);
+    }
     
 
+
+
+
+    
     pros::delay(ez::util::DELAY_TIME);  // This is used for timer calculations!  Keep this ez::util::DELAY_TIME
   }
 }

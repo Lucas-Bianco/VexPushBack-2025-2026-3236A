@@ -8,7 +8,7 @@ extern Drive chassis;
 // Your motors, sensors, etc. should go here.  Below are examples
 
 inline pros::Motor intake(-8);
-inline pros::Motor intakecolorsort(-6);
+inline pros::Motor intakecolorsort(6);
 inline pros::Motor intake1(-9);
 inline pros::Motor intake3(-10);
 

@@ -257,12 +257,14 @@ void opcontrol() {
     // Spin the intake if intake_running is true
     if (intake_running) {
       intake.move(127);
+      intakecolorsort.move(127);
     }
     // Stop the intake if intake_running is false 
     else {
       intake.move(0);
+      intakecolorsort.move(0);
     }
-
+   
 
 
     if (master.get_digital(DIGITAL_R1)) {
@@ -277,16 +279,6 @@ void opcontrol() {
 
 
 
-
-    if (master.get_digital(DIGITAL_LEFT)) {
-      intakecolorsort.move(127);
-    } 
-    else if (master.get_digital(DIGITAL_RIGHT)) {
-      intakecolorsort.move(-127);
-    } 
-    else {
-      intakecolorsort.move(0);
-    }
 
 
     

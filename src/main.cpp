@@ -250,21 +250,42 @@ void opcontrol() {
     // . . .
     
     // Set intake_running to the opposite of itself
-    if (master.get_digital_new_press(DIGITAL_L1)) {
-      intake_running = !intake_running;
-    }
-
-    // Spin the intake if intake_running is true
-    if (intake_running) {
+    if (master.get_digital(DIGITAL_L1)) {
       intake.move(127);
-    }
-    // Stop the intake if intake_running is false 
+    } 
+    else if (master.get_digital(DIGITAL_L2)) {
+      intake.move(-127);
+    } 
     else {
       intake.move(0);
     }
-    
-
-
+    if (master.get_digital(DIGITAL_R1)) {
+      intake1.move(127);
+    } 
+    else if (master.get_digital(DIGITAL_R2)) {
+      intake1.move(-127);
+    } 
+    else {
+      intake1.move(0);
+    }
+    if (master.get_digital(DIGITAL_LEFT)) {
+      intake2.move(127);
+    } 
+    else if (master.get_digital(DIGITAL_RIGHT)) {
+      intake2.move(-127);
+    } 
+    else {
+      intake2.move(0);
+    }
+    if (master.get_digital(DIGITAL_UP)) {
+      intake3.move(127);
+    } 
+    else if (master.get_digital(DIGITAL_DOWN)) {
+      intake3.move(-127);
+    } 
+    else {
+      intake3.move(0);
+    }
 
 
     

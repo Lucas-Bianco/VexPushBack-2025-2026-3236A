@@ -13,8 +13,11 @@ inline pros::Motor mainscoring(-9);
 inline pros::Motor intakemainscoring(-10);
 
 
-
+// Front Unload Piston
 inline ez::Piston doinker('H');
 
+
+
+// Optical Sensor Port
 inline pros::Optical colorSensor(5);
 

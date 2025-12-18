@@ -272,9 +272,14 @@ void opcontrol() {
     // chassis.opcontrol_arcade_flipped(ez::SINGLE);   // Flipped single arcade
 
     // . . .
-    // Put more user control code here!
+    // Put  user control code here!
     // . . .
     
+
+
+    // . . .
+    // Intake Code
+    // . . .
     if (master.get_digital(DIGITAL_L1)){
       intake.move(127);
     }
@@ -300,7 +305,9 @@ void opcontrol() {
     }
    
 
-
+// . . .
+// Main Scoring Roller
+// . . .
     if (master.get_digital(DIGITAL_R1)) {
       mainscoring.move(127);
     } 
@@ -312,7 +319,9 @@ void opcontrol() {
     }
 
 
-
+// . . .
+// Scoring Roller Feed Roller
+// . . . 
 
 
     
@@ -327,7 +336,15 @@ void opcontrol() {
     }
 
     doinker.button_toggle(master.get_digital(DIGITAL_UP));
-    
-    pros::delay(ez::util::DELAY_TIME);  // This is used for timer calculations!  Keep this ez::util::DELAY_TIME
+
+
+
+
+
+
+
+
+    // Delay to make everything worlk DONT DLEETE PLS :PRAY:
+    pros::delay(ez::util::DELAY_TIME);  
   }
 }

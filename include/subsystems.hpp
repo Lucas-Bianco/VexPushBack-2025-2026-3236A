@@ -9,8 +9,10 @@ extern Drive chassis;
 
 inline pros::Motor intake(8);
 inline pros::Motor intakecolorsort(-6);
-inline pros::Motor intake1(-9);
-inline pros::Motor intake3(-10);
+inline pros::Motor mainscoring(-9);
+inline pros::Motor intakemainscoring(-10);
+
+
 
 inline ez::Piston doinker('H');
 

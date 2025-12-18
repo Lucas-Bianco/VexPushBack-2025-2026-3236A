@@ -302,13 +302,13 @@ void opcontrol() {
 
 
     if (master.get_digital(DIGITAL_R1)) {
-      intake1.move(127);
+      mainscoring.move(127);
     } 
     else if (master.get_digital(DIGITAL_R2)) {
-      intake1.move(-127);
+      mainscoring.move(-127);
     } 
     else {
-      intake1.move(0);
+      mainscoring.move(0);
     }
 
 
@@ -317,13 +317,13 @@ void opcontrol() {
 
     
     if (master.get_digital(DIGITAL_UP)) {
-      intake3.move(127);
+      intakemainscoring.move(127);
     } 
     else if (master.get_digital(DIGITAL_DOWN)) {
-      intake3.move(-127);
+      intakemainscoring.move(-127);
     } 
     else {
-      intake3.move(0);
+      intakemainscoring.move(0);
     }
 
     doinker.button_toggle(master.get_digital(DIGITAL_UP));

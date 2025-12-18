@@ -321,10 +321,7 @@ void opcontrol() {
 
 // . . .
 // Scoring Roller Feed Roller
-// . . . 
-
-
-    
+// . . .     
     if (master.get_digital(DIGITAL_UP)) {
       intakemainscoring.move(127);
     } 
@@ -333,7 +330,7 @@ void opcontrol() {
     } 
     else {
       intakemainscoring.move(0);
-
+    }
 
 
 // . . .

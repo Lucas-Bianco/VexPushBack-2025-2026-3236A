@@ -12,8 +12,7 @@ inline pros::Motor intakecolorsort(-6);
 inline pros::Motor intake1(-9);
 inline pros::Motor intake3(-10);
 
+inline ez::Piston doinker('H');
 
+inline pros::Optical colorSensor(5);
 
-
-
-// inline pros::adi::DigitalIn limit_switch('A');

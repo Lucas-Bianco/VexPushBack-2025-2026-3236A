@@ -228,6 +228,32 @@ void ez_template_extras() {
  * task, not resume it from where it left off.
  */
 
+
+ enum DetectColor {
+  NONE,
+  RED,
+  BLUE
+ };
+
+ DetectColor get_color(){
+  colorSensor.set_led_pwm(100);
+  pros::delay(10);
+
+  int hue = colorSensor.get_hue();
+  int proximity = colorSensor.get_proximity();
+
+  if (proximity < 80) return NONE;
+
+  if ((hue >= 0 && hue <= 20) || (hue >= 340 && hue <= 360)){
+    return RED;
+  }
+
+  if (hue >= 180 && hue <= 250){
+    return BLUE;
+  }
+  return NONE;
+ }
+
 void opcontrol() {
   // This is preference to what you like to drive on
   chassis.drive_brake_set(MOTOR_BRAKE_COAST);
@@ -249,20 +275,28 @@ void opcontrol() {
     // Put more user control code here!
     // . . .
     
-    // Set intake_running to the opposite of itself
-    if (master.get_digital_new_press(DIGITAL_L1)) {
-      intake_running = !intake_running;
+    if (master.get_digital(DIGITAL_L1)){
+      intake.move(127);
     }
 
-    // Spin the intake if intake_running is true
-    if (intake_running) {
-      intake.move(127);
-      intakecolorsort.move(127);
+    else if (master.get_digital(DIGITAL_L2)){
+      intake.move(-127);
     }
-    // Stop the intake if intake_running is false 
-    else {
-      intake.move(0);
-      intakecolorsort.move(0);
+
+    else{
+      DetectColor color = get_color();
+
+      if (color == RED){
+        intakecolorsort.move(127);
+      }
+      else if (color == BLUE){
+        intakecolorsort.move(-80);
+        pros::delay(150);
+        intakecolorsort.move(0);
+      }
+      else{
+        intakecolorsort.move(0);
+      }
     }
    
 
@@ -292,7 +326,7 @@ void opcontrol() {
       intake3.move(0);
     }
 
-
+    doinker.button_toggle(master.get_digital(DIGITAL_UP));
     
     pros::delay(ez::util::DELAY_TIME);  // This is used for timer calculations!  Keep this ez::util::DELAY_TIME
   }

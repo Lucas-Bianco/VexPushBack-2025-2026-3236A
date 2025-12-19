@@ -21,7 +21,7 @@ ez::Drive chassis(
 //`2.00` is the wheel diameter
 //`4.0` is the distance from the center of the wheel to the center of the robot
 ez::tracking_wheel horiz_tracker(15, 2.00, 5.5);  // This tracking wheel is perpendicular to the drive wheels
-ez::tracking_wheel vert_tracker(16, 2.00, 0.1);   // This tracking wheel is parallel to the drive wheels
+ez::tracking_wheel vert_tracker(16, 2.00, 0.5);   // This tracking wheel is parallel to the drive wheels
 
 /**
  * Runs initialization code. This occurs as soon as the program is started.
@@ -234,6 +234,30 @@ void ez_template_extras() {
   RED,
   BLUE
  };
+enum class IntakeState {
+  OFF,
+  FORWARD,
+  REVERSE
+};
+
+
+IntakeState intake_state = IntakeState::OFF;
+
+bool color_sort_enabled = false;
+
+// Edge detection
+bool l1_last = false;
+bool l2_last = false;
+bool x_last  = false;
+
+// Reject timing
+int reject_timer = 0;
+const int REJECT_TIME = 140;
+
+ 
+
+
+
 
  DetectColor get_color(){
   colorSensor.set_led_pwm(100);
@@ -277,33 +301,82 @@ void opcontrol() {
     
 
 
-    // . . .
-    // Intake Code
-    // . . .
-    if (master.get_digital(DIGITAL_L1)){
-      intake.move(127);
+    // =========================
+// TOGGLES
+// =========================
+    bool l1_now = master.get_digital(DIGITAL_L1);
+    bool l2_now = master.get_digital(DIGITAL_L2);
+    bool x_now  = master.get_digital(DIGITAL_X);
+
+// L1 → TOGGLE FORWARD
+    if (l1_now && !l1_last) {
+      intake_state = (intake_state == IntakeState::FORWARD)
+                 ? IntakeState::OFF
+                 : IntakeState::FORWARD;
     }
 
-    else if (master.get_digital(DIGITAL_L2)){
-      intake.move(-127);
+// L2 → TOGGLE REVERSE
+    if (l2_now && !l2_last) {
+      intake_state = (intake_state == IntakeState::REVERSE)
+                 ? IntakeState::OFF
+                 : IntakeState::REVERSE;
     }
 
-    else{
+// X → TOGGLE COLOR SORT
+    if (x_now && !x_last) {
+      color_sort_enabled = !color_sort_enabled;
+    }
+
+// Save last states
+    l1_last = l1_now;
+    l2_last = l2_now;
+    x_last  = x_now;
+
+// =========================
+// INTAKE + COLOR SORT
+// =========================
+    int direction = 0;
+
+    if (intake_state == IntakeState::FORWARD) {
+      direction = 127;
+    }
+    else if (intake_state == IntakeState::REVERSE) {
+      direction = -127;
+    }
+
+    if (direction != 0) {
+      intake.move(direction);
+
+  // COLOR SORT ACTIVE
+  if (color_sort_enabled) {
+    // Reject pulse active
+    if (reject_timer > 0) {
+      intakecolorsort.move(-direction);
+      reject_timer -= ez::util::DELAY_TIME;
+    }
+    else {
       DetectColor color = get_color();
 
-      if (color == RED){
-        intakecolorsort.move(127);
+      // CHANGE THIS COLOR IF NEEDED
+      if (color == BLUE) {
+        reject_timer = REJECT_TIME;
+        intakecolorsort.move(-direction);
       }
-      else if (color == BLUE){
-        intakecolorsort.move(-80);
-        pros::delay(150);
-        intakecolorsort.move(0);
-      }
-      else{
-        intakecolorsort.move(0);
+      else {
+        intakecolorsort.move(direction);
       }
     }
-   
+  }
+    else {
+       intakecolorsort.move(direction);
+      }
+    }
+    else {
+      intake.move(0);
+      intakecolorsort.move(0);
+      reject_timer = 0;
+    }
+
 
 // . . .
 // Main Scoring Roller

@@ -52,24 +52,6 @@ void default_constants() {
 
 
 
-///
-// Odom Drive PID
-///
-void odom_drive_example() {
-  // This works the same as pid_drive_set, but it uses odom instead!
-  // You can replace pid_drive_set with pid_odom_set and your robot will
-  // have better error correction.
-
-  chassis.pid_odom_set(24_in, DRIVE_SPEED, true);
-  chassis.pid_wait();
-
-  chassis.pid_odom_set(-12_in, DRIVE_SPEED);
-  chassis.pid_wait();
-
-  chassis.pid_odom_set(-12_in, DRIVE_SPEED);
-  chassis.pid_wait();
-}
-
 
 
 
@@ -139,7 +121,5 @@ void measure_offsets() {
 // . . .
 
 void ballrush() {
-  chassis.pid_odom_set({{12_in, 12_in}, fwd, DRIVE_SPEED});
 
-  chassis.pid_odom_set({{12_in, 12_in, 90_deg}, fwd, DRIVE_SPEED});
 }

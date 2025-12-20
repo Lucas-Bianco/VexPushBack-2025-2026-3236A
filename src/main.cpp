@@ -58,7 +58,6 @@ void initialize() {
 
   // Autonomous Selector using LLEMU
   ez::as::auton_selector.autons_add({
-      {"Simple Odom\n\nThis is the same as the drive example, but it uses odom instead!", odom_drive_example},
       {"BallRushTest", ballrush}
   });
 
@@ -304,9 +303,9 @@ void opcontrol() {
     // =========================
 // TOGGLES
 // =========================
-    bool l1_now = master.get_digital(DIGITAL_L1);
-    bool l2_now = master.get_digital(DIGITAL_L2);
-    bool x_now  = master.get_digital(DIGITAL_X);
+    bool l1_now = master.get_digital(DIGITAL_L2);
+    bool l2_now = master.get_digital(DIGITAL_L1);
+    bool x_now  = master.get_digital(DIGITAL_Y);
 
 // L1 → TOGGLE FORWARD
     if (l1_now && !l1_last) {
@@ -383,33 +382,24 @@ void opcontrol() {
 // . . .
     if (master.get_digital(DIGITAL_R1)) {
       mainscoring.move(127);
+      intakemainscoring.move(127);
     } 
     else if (master.get_digital(DIGITAL_R2)) {
       mainscoring.move(-127);
+      intakemainscoring.move(127);
     } 
     else {
       mainscoring.move(0);
-    }
-
-
-// . . .
-// Scoring Roller Feed Roller
-// . . .     
-    if (master.get_digital(DIGITAL_UP)) {
-      intakemainscoring.move(127);
-    } 
-    else if (master.get_digital(DIGITAL_DOWN)) {
-      intakemainscoring.move(-127);
-    } 
-    else {
       intakemainscoring.move(0);
     }
+
+
 
 
 // . . .
 // Mathload Unloader Piston
 // . . .
-    doinker.button_toggle(master.get_digital(DIGITAL_UP));
+    doinker.button_toggle(master.get_digital(DIGITAL_X));
 
 
 

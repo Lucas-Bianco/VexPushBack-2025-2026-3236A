@@ -357,7 +357,7 @@ void opcontrol() {
       DetectColor color = get_color();
 
       // CHANGE THIS COLOR IF NEEDED
-      if (color == BLUE) {
+      if (color == RED) {
         reject_timer = REJECT_TIME;
         intakecolorsort.move(-direction);
       }

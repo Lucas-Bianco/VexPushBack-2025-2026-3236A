@@ -401,7 +401,7 @@ void opcontrol() {
 // . . .
     doinker.button_toggle(master.get_digital(DIGITAL_X));
 
-
+    holder.button_toggle(master.get_digital(DIGITAL_LEFT));
 
 
 

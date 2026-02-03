@@ -17,6 +17,9 @@ inline pros::Motor intakemainscoring(-10);
 inline ez::Piston doinker('H');
 
 
+//Holder
+inline ez::Piston holder('G');
+
 
 // Optical Sensor Port
 inline pros::Optical colorSensor(5);

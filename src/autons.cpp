@@ -121,5 +121,11 @@ void measure_offsets() {
 // . . .
 
 void ballrush() {
+  // Drive forward to (0, 36) forward
+  chassis.pid_odom_set({{0_in, 12_in}, fwd, 110});
+  chassis.pid_wait();
 
+// Drive back to (0, 0) forward
+  chassis.pid_odom_set({{0_in, 0_in}, fwd, 110});
+  chassis.pid_wait();
 }

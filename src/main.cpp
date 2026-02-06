@@ -58,7 +58,9 @@ void initialize() {
 
   // Autonomous Selector using LLEMU
   ez::as::auton_selector.autons_add({
-      {"BallRushTest", ballrush}
+    {"None\n\n its nothing", None},
+    {"GoesForward \n\nGoes forward a lil", GoForwardLittle},
+    {"OdomTest \n\nTests odometry", measure_offsets},
   });
 
   // Initialize chassis and auton selector

@@ -63,7 +63,7 @@ void measure_offsets() {
   int iterations = 10;
 
   // Our final offsets
-  double l_offset = 0.0, r_offset = 0.0, b_offset = 0.0, f_offset = 0.0;
+  double l_offset = 1.3, r_offset = 0.0, b_offset = 0.0, f_offset = 0.0;
 
   // Reset all trackers if they exist
   if (chassis.odom_tracker_left != nullptr) chassis.odom_tracker_left->reset();
@@ -120,12 +120,21 @@ void measure_offsets() {
 // Make your own autonomous functions here!
 // . . .
 
-void ballrush() {
-  // Drive forward to (0, 36) forward
-  chassis.pid_odom_set({{0_in, 12_in}, fwd, 110});
+
+void None() {
+ 
+}
+
+void GoForwardLittle() {
+  chassis.pid_drive_set(24_in, 110);
   chassis.pid_wait();
 
-// Drive back to (0, 0) forward
-  chassis.pid_odom_set({{0_in, 0_in}, fwd, 110});
+  chassis.pid_turn_set(45_deg, 90);
+  chassis.pid_wait();
+
+  chassis.pid_swing_set(ez::RIGHT_SWING, 0_deg, 90);
+  chassis.pid_wait();
+
+  chassis.pid_odom_set({{0_in, 0_in}, rev, 110});
   chassis.pid_wait();
 }

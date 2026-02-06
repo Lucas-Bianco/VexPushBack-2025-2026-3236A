@@ -126,15 +126,6 @@ void None() {
 }
 
 void GoForwardLittle() {
-  chassis.pid_drive_set(24_in, 110);
-  chassis.pid_wait();
-
-  chassis.pid_turn_set(45_deg, 90);
-  chassis.pid_wait();
-
-  chassis.pid_swing_set(ez::RIGHT_SWING, 0_deg, 90);
-  chassis.pid_wait();
-
-  chassis.pid_odom_set({{0_in, 0_in}, rev, 110});
+  chassis.pid_drive_set(4_in, 110);
   chassis.pid_wait();
 }

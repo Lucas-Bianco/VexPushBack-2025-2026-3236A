@@ -379,21 +379,36 @@ void opcontrol() {
     }
 
 
+bool scoring_active = false;
+
 // . . .
 // Main Scoring Roller
 // . . .
-    if (master.get_digital(DIGITAL_R1)) {
-      mainscoring.move(127);
-      intakemainscoring.move(127);
-    } 
-    else if (master.get_digital(DIGITAL_R2)) {
-      mainscoring.move(-127);
-      intakemainscoring.move(127);
-    } 
-    else {
-      mainscoring.move(0);
-      intakemainscoring.move(0);
-    }
+if (master.get_digital(DIGITAL_R1)) {
+  mainscoring.move(127);
+  intakemainscoring.move(127);
+  scoring_active = true;
+} 
+else if (master.get_digital(DIGITAL_R2)) {
+  mainscoring.move(-127);
+  intakemainscoring.move(127);
+  scoring_active = true;
+} 
+else {
+  mainscoring.move(0);
+  intakemainscoring.move(0);
+  scoring_active = false;
+}
+
+// . . .
+// HOLDER LOGIC (DEFAULT OUT)
+// . . .
+if (scoring_active) {
+  holder.set(false);   // IN (change if reversed)
+} else {
+  holder.set(true);    // OUT (default)
+}
+
 
 
 

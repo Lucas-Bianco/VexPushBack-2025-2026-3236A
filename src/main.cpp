@@ -63,10 +63,13 @@ void initialize() {
     {"OdomTest \n\nTests odometry", measure_offsets},
   });
 
+
   // Initialize chassis and auton selector
   chassis.initialize();
   ez::as::initialize();
   master.rumble(chassis.drive_imu_calibrated() ? "." : "---");
+  // Set starting pneumatic states
+  doinker.set(false);   // IN (flip true/false if reversed)
 }
 
 /**
@@ -401,12 +404,12 @@ else {
 }
 
 // . . .
-// HOLDER LOGIC (DEFAULT OUT)
+// HOLDER LOGIC
 // . . .
 if (scoring_active) {
-  holder.set(false);   // IN (change if reversed)
+  holder.set(false);  
 } else {
-  holder.set(true);    // OUT (default)
+  holder.set(true);
 }
 
 

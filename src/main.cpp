@@ -61,6 +61,7 @@ void initialize() {
     {"None\n\n its nothing", None},
     {"GoesForward \n\nGoes forward a lil", GoForwardLittle},
     {"OdomTest \n\nTests odometry", measure_offsets},
+    {"Left Blue Non Solo \n\nA left side blue alliance routine that doesn't rely on being the only robot on the field", LefBlueNonSolo},
   });
 
 

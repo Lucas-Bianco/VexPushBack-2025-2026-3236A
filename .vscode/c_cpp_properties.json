@@ -4,20 +4,21 @@
       "name": "PROS Project",
       "includePath": [
         "${workspaceFolder}/**",
-        "c:\\Users\\Lucas\\Documents\\GitHub\\VexPushBack-2025-2026-3236A\\include"
+        "c:\\Users\\Lucas\\Documents\\GitHub\\VexPushBack-2025-2026-3236A\\include",
+        "c:\\Users\\mikeb\\Downloads\\Pusback Robotics\\VexPushBack-2025-2026-3236A\\include"
       ],
       "defines": [
         "_DEBUG",
         "UNICODE",
         "_UNICODE"
       ],
-      "compilerPath": "c:\\Users\\Lucas\\AppData\\Roaming\\Code\\User\\globalStorage\\sigbots.pros\\install\\pros-toolchain-windows\\usr\\bin\\arm-none-eabi-g++",
+      "compilerPath": "c:\\Users\\mikeb\\AppData\\Roaming\\Code\\User\\globalStorage\\sigbots.pros\\install\\pros-toolchain-windows\\usr\\bin\\arm-none-eabi-g++",
       "cStandard": "gnu11",
       "cppStandard": "gnu++20",
       "intelliSenseMode": "gcc-arm",
       "browse": {
         "path": [
-          "c:\\Users\\Lucas\\Documents\\GitHub\\VexPushBack-2025-2026-3236A"
+          "c:\\Users\\mikeb\\Downloads\\Pusback Robotics\\VexPushBack-2025-2026-3236A"
         ],
         "limitSymbolsToIncludedHeaders": true,
         "databaseFilename": ""

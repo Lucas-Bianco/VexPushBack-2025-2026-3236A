@@ -130,10 +130,10 @@ void GoForwardLittle() {
   chassis.pid_wait();
 }
 
-void LefBlueNonSolo() {
+void LeftBlueNonSolo() {
 
-  chassis.pid_drive_set(24_in, 100);
-  chassis.pid_wait();
+  chassis.pid_drive_set(12_in, 100);
+  chassis.pid_wait(); 
 
   chassis.pid_turn_set(90_deg, 90);
   chassis.pid_wait();
@@ -143,13 +143,24 @@ void LefBlueNonSolo() {
 
   intake.move(-127);
   intakecolorsort.move(-127);
+
   pros::delay(500);
   
   
-  chassis.pid_drive_set(24_in, 110);
+  chassis.pid_drive_set(24_in, 70);
+  chassis.pid_wait();
+
+  
+  chassis.pid_drive_set(-24_in, 90);
+  chassis.pid_wait();
+
+  chassis.pid_turn_set(-90_deg, 90);
   chassis.pid_wait();
 
   
 }
 
 
+void RightBlueNonSolo() {
+  
+}

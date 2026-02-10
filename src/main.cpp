@@ -61,7 +61,8 @@ void initialize() {
     {"None\n\n its nothing", None},
     {"GoesForward \n\nGoes forward a lil", GoForwardLittle},
     {"OdomTest \n\nTests odometry", measure_offsets},
-    {"Left Blue Non Solo \n\nA left side blue alliance routine that doesn't rely on being the only robot on the field", LefBlueNonSolo},
+    {"Left Blue Non Solo \n\nA left side blue alliance routine that doesn't rely on being the only robot on the field", LeftBlueNonSolo},
+    {"Right Blue Non Solo \n\nA right side blue alliance routine that doesn't rely on being the only robot on the field", RightBlueNonSolo}
   });
 
 
@@ -418,9 +419,9 @@ if (scoring_active) {
 // . . .
 // Mathload Unloader Piston
 // . . .
-    doinker.button_toggle(master.get_digital(DIGITAL_X));
+    doinker.button_toggle(master.get_digital(DIGITAL_B));
 
-    holder.button_toggle(master.get_digital(DIGITAL_LEFT));
+    Wing.button_toggle(master.get_digital(DIGITAL_DOWN));
 
 
 

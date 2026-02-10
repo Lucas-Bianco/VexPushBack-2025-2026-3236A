@@ -16,6 +16,9 @@ inline pros::Motor intakemainscoring(-10);
 // Front Unload Piston
 inline ez::Piston doinker('H');
 
+// Front Unload Piston
+inline ez::Piston Wing('F');
+
 
 //Holder
 inline ez::Piston holder('G');

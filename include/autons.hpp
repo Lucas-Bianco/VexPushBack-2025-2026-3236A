@@ -9,4 +9,5 @@ void measure_offsets();
 void None();
 void GoForwardLittle();
 void odomtest();
-void LefBlueNonSolo();
+void LeftBlueNonSolo();
+void RightBlueNonSolo();

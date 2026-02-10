@@ -62,7 +62,11 @@ void initialize() {
     {"GoesForward \n\nGoes forward a lil", GoForwardLittle},
     {"OdomTest \n\nTests odometry", measure_offsets},
     {"Left Blue Non Solo \n\nA left side blue alliance routine that doesn't rely on being the only robot on the field", LeftBlueNonSolo},
-    {"Right Blue Non Solo \n\nA right side blue alliance routine that doesn't rely on being the only robot on the field", RightBlueNonSolo}
+    {"Right Blue Non Solo \n\nA right side blue alliance routine that doesn't rely on being the only robot on the field", RightBlueNonSolo},
+    {"Left Red Non Solo \n\nA left side red alliance routine that doesn't rely on being the only robot on the field", LeftRedNonSolo},
+    {"Right Red Non Solo \n\nA right side red alliance routine that doesn't rely on being the only robot on the field", RightRedNonSolo},
+    {"Blue Solo AWP \n\nA blue alliance routine that relies on being the only robot on the field", BlueSoloAWP},
+    {"Red Solo AWP \n\nA red alliance routine that relies on being the only robot on the field", RedSoloAWP}
   });
 
 

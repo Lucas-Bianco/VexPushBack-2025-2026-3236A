@@ -11,3 +11,7 @@ void GoForwardLittle();
 void odomtest();
 void LeftBlueNonSolo();
 void RightBlueNonSolo();
+void LeftRedNonSolo();
+void RightRedNonSolo();
+void BlueSoloAWP();
+void RedSoloAWP();

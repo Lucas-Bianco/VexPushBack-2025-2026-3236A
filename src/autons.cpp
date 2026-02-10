@@ -162,5 +162,23 @@ void LeftBlueNonSolo() {
 
 
 void RightBlueNonSolo() {
-  
+
+
+
+}
+
+void LeftRedNonSolo() {
+
+}
+
+void RightRedNonSolo() {
+
+}
+
+void BlueSoloAWP() {
+
+}
+
+void RedSoloAWP() {
+
 }

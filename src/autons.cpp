@@ -134,16 +134,16 @@ void LeftBlueNonSolo() {
 
 
   // Move Off Start
-  chassis.pid_drive_set(16_in, 100);
+  chassis.pid_drive_set(20_in, 100);
   chassis.pid_wait(); 
   //Turn Right towards Inital 3 Balls
-  chassis.pid_turn_set(100_deg, 85);
+  chassis.pid_turn_set(-12_deg, 85);
   chassis.pid_wait();
 
   //Makes Sure Holder is extended
   holder.set(true);
   //Moves Towards The balls A little
-  chassis.pid_drive_set(12_in, 110);
+  chassis.pid_drive_set(6_in, 110);
   chassis.pid_wait();
   //Moves Intake Motors To pickup
   intake.move(-127);
@@ -151,7 +151,7 @@ void LeftBlueNonSolo() {
 
   
   //Picks up balls, goes Slowly To be better for Clogs
-  chassis.pid_drive_set(38_in, 40);
+  chassis.pid_drive_set(10_in, 40);
   chassis.pid_wait();
 
 

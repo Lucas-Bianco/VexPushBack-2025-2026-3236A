@@ -156,51 +156,51 @@ void LeftBlueNonSolo() {
   chassis.pid_wait();
 
   //Backs Up
-  chassis.pid_drive_set(-24_in, 90);
-  chassis.pid_wait();
+  //chassis.pid_drive_set(-24_in, 90);
+  //chassis.pid_wait();
 
   //Turns Towards Loader and Long Goal
-  chassis.pid_turn_set(-90_deg, 90);
-  chassis.pid_wait();
+  //chassis.pid_turn_set(-90_deg, 90);
+  //chassis.pid_wait();
 
   //Gets between the Long goal and match loader
-  chassis.pid_drive_set(24_in, 90);
-  chassis.pid_wait();
+  //chassis.pid_drive_set(24_in, 90);
+  //chassis.pid_wait();
   //Turns Front Towards match Loader
-  chassis.pid_turn_set(-90_deg, 90);
-  chassis.pid_wait();
+  //chassis.pid_turn_set(-90_deg, 90);
+  //chassis.pid_wait();
   //Puts MatchLoader Down
-  doinker.set(true);
+  //doinker.set(true);
   //Gets up against Long Goal
-  chassis.pid_drive_set(-12_in, 90);
-  chassis.pid_wait();
+  //chassis.pid_drive_set(-12_in, 90);
+  //chassis.pid_wait();
   
   //Moves Scoring Roller
-  mainscoring.move(127);
+  //mainscoring.move(127);
   //Releaces Balls
-  holder.set(false);
+  //holder.set(false);
 
   //Delay Just In case it takes a while
-  pros::delay(1000);
+  //pros::delay(1000);
 
   //Rapid Goes Towards Loader
-  chassis.pid_drive_set(24_in, 90);
-  chassis.pid_wait();
+  //chassis.pid_drive_set(24_in, 90);
+  //chassis.pid_wait();
 
   //Holds Balls
-  holder.set(true);
+  //holder.set(true);
   //Slower Putting Unloader into the Matchload
-  chassis.pid_drive_set(10_in, 60);
-  chassis.pid_wait();
+  //chassis.pid_drive_set(10_in, 60);
+  //chassis.pid_wait();
   //Makes sure they got in 
-  pros::delay(2000);
+  //pros::delay(2000);
 
   //Go Backwards To Put final blocks in long goal
-  chassis.pid_drive_set(-24_in, 100);
-  chassis.pid_wait();
+  //chassis.pid_drive_set(-24_in, 100);
+  //chassis.pid_wait();
 
   //Releaces Balls
-  holder.set(false);
+  //holder.set(false);
 
   //Depending on How this works out, can maybe start to hoard some blue balls
   

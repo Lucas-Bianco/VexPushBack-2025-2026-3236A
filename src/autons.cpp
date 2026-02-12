@@ -160,9 +160,9 @@ void LeftBlueNonSolo() {
   chassis.pid_drive_set(-6_in, 110);
   chassis.pid_wait();
   
-  chassis.pid_turn_set(12_deg, 85);
+  chassis.pid_turn_set(12_deg, 95);
   chassis.pid_wait();
-  chassis.pid_turn_set(-12_deg, 85);
+  chassis.pid_turn_set(-12_deg, 95);
   chassis.pid_wait();
 
   intake.move(127); 
@@ -199,21 +199,6 @@ void LeftBlueNonSolo() {
 
   doinker.set(false);
 
-
-  pros::delay(3000);
-  
-  holder.set(true);
-  chassis.pid_drive_set(27_in, 100); 
-  chassis.pid_wait();
-  pros::delay(1500);
-
-  chassis.pid_drive_set(-27_in, 100); 
-  chassis.pid_wait();
-  doinker.set(true);
-
-
-
-  holder.set(false);
 }
 
 

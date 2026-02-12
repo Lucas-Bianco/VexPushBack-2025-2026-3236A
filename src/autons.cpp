@@ -151,11 +151,69 @@ void LeftBlueNonSolo() {
 
   
   //Picks up balls, goes Slowly To be better for Clogs
-  chassis.pid_drive_set(10_in, 40);
+  chassis.pid_drive_set(10_in, 30);
+  chassis.pid_wait();
+  intake.move(127); 
+  pros::delay(300);
+  intake.move(-127);
+
+  chassis.pid_drive_set(-6_in, 110);
+  chassis.pid_wait();
+  
+  chassis.pid_turn_set(12_deg, 85);
+  chassis.pid_wait();
+  chassis.pid_turn_set(-12_deg, 85);
+  chassis.pid_wait();
+
+  intake.move(127); 
+  pros::delay(300);
+  intake.move(-127);
+
+  chassis.pid_drive_set(17_in, 70);
+  chassis.pid_wait();
+  
+  chassis.pid_drive_set(-25_in, 80);
+  chassis.pid_wait();
+
+  chassis.pid_turn_set(270_deg, 85);
+  chassis.pid_wait();
+
+  chassis.pid_drive_set(31_in, 100); 
+  chassis.pid_wait();
+
+  chassis.pid_turn_set(180_deg, 85);
+  chassis.pid_wait();
+
+  chassis.pid_drive_set(-9_in, 80);
   chassis.pid_wait();
 
 
+
+  mainscoring.move(-127);
   
+  intake.move(127); 
+  pros::delay(300);
+  intake.move(-127);
+
+  holder.set(false);
+
+  doinker.set(false);
+
+
+  pros::delay(3000);
+  
+  holder.set(true);
+  chassis.pid_drive_set(27_in, 100); 
+  chassis.pid_wait();
+  pros::delay(1500);
+
+  chassis.pid_drive_set(-27_in, 100); 
+  chassis.pid_wait();
+  doinker.set(true);
+
+
+
+  holder.set(false);
 }
 
 

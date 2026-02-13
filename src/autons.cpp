@@ -132,72 +132,57 @@ void GoForwardLittle() {
 
 void LeftBlueNonSolo() {
 
+  chassis.slew_drive_set(true);  // Enables global slew
+  chassis.slew_drive_constants_set(5_in, 50);
 
-  // Move Off Start
-  chassis.pid_drive_set(20_in, 100);
+
+  intake.move(-127);
+  intakecolorsort.move(-127);
+  chassis.pid_drive_set(10_in, 100);
   chassis.pid_wait(); 
-  //Turn Right towards Inital 3 Balls
-  chassis.pid_turn_set(-12_deg, 85);
-  chassis.pid_wait();
+  // Move Off Start
+  chassis.pid_drive_set(24_in, 50);
+  chassis.pid_wait(); 
 
-  //Makes Sure Holder is extended
-  holder.set(true);
-  //Moves Towards The balls A little
-  chassis.pid_drive_set(6_in, 110);
-  chassis.pid_wait();
-  //Moves Intake Motors To pickup
+  chassis.pid_drive_set(-5_in, 50);
+  chassis.pid_wait(); 
+
+  intake.move(127);
+  intakecolorsort.move(127);
+  pros::delay(200);
   intake.move(-127);
   intakecolorsort.move(-127);
 
+  chassis.pid_drive_set(5_in, 50);
+  chassis.pid_wait();
+
+  chassis.pid_drive_set(6_in, 50);
+  chassis.pid_wait(); 
   
-  //Picks up balls, goes Slowly To be better for Clogs
-  chassis.pid_drive_set(10_in, 30);
-  chassis.pid_wait();
-  intake.move(127); 
-  pros::delay(300);
-  intake.move(-127);
+  chassis.pid_drive_set(-9_in, 50);
+  chassis.pid_wait(); 
 
-  chassis.pid_drive_set(-6_in, 110);
+  chassis.pid_turn_set(-110_deg, 90);
   chassis.pid_wait();
+ 
+  chassis.pid_drive_set(-12_in, 50);
+  chassis.pid_wait(); 
   
-  chassis.pid_turn_set(12_deg, 95);
-  chassis.pid_wait();
-  chassis.pid_turn_set(-12_deg, 95);
-  chassis.pid_wait();
-
-  intake.move(127); 
-  pros::delay(300);
-  intake.move(-127);
-
-  chassis.pid_drive_set(17_in, 70);
-  chassis.pid_wait();
-  
-  chassis.pid_drive_set(-25_in, 80);
-  chassis.pid_wait();
-
-  chassis.pid_turn_set(270_deg, 85);
-  chassis.pid_wait();
-
-  chassis.pid_drive_set(31_in, 100); 
-  chassis.pid_wait();
-
-  chassis.pid_turn_set(180_deg, 85);
-  chassis.pid_wait();
-
-  chassis.pid_drive_set(-9_in, 80);
-  chassis.pid_wait();
-
-
-
-  mainscoring.move(-127);
-  
-  intake.move(127); 
-  pros::delay(300);
-  intake.move(-127);
+  mainscoring.move(127);
 
   holder.set(false);
+  pros::delay(1500);
+  holder.set(true);
 
-  doinker.set(false);
+  chassis.pid_drive_set(45_in, 100);
+  chassis.pid_wait();
+
+  chassis.pid_turn_set(-25_deg, 90);
+  chassis.pid_wait();
+
+  chassis.pid_drive_set(-5_in, 100);
+  chassis.pid_wait();
+
 
 }
 

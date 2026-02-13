@@ -168,22 +168,27 @@ void LeftBlueNonSolo() {
   chassis.pid_drive_set(-12_in, 50);
   chassis.pid_wait(); 
   
-  mainscoring.move(127);
+  mainscoring.move(90);
 
   holder.set(false);
   pros::delay(1500);
   holder.set(true);
+  
+  mainscoring.move(0);
+  
+  pros::delay(200);
 
-  chassis.pid_drive_set(45_in, 100);
+  chassis.pid_drive_set(50_in, 100);
   chassis.pid_wait();
 
-  chassis.pid_turn_set(-25_deg, 90);
+  chassis.pid_turn_set(200_deg, 90);
   chassis.pid_wait();
-
-  chassis.pid_drive_set(-5_in, 100);
+  
+  chassis.pid_drive_set(-13.5_in, 100);
   chassis.pid_wait();
-
-
+  mainscoring.move(-127);
+  
+  holder.set(false);
 }
 
 

@@ -58,10 +58,10 @@ void initialize() {
 
   // Autonomous Selector using LLEMU
   ez::as::auton_selector.autons_add({
-    {"None\n\n its nothing", LeftBlueNonSolo},
+    {"None\n\n its nothing", None},
     {"GoesForward \n\nGoes forward a lil", GoForwardLittle},
     {"OdomTest \n\nTests odometry", measure_offsets},
-    {"Left Blue Non Solo \n\nA left side blue alliance routine that doesn't rely on being the only robot on the field", None},
+    {"Left Blue Non Solo \n\nA left side blue alliance routine that doesn't rely on being the only robot on the field", LeftBlueNonSolo},
     {"Right Blue Non Solo \n\nA right side blue alliance routine that doesn't rely on being the only robot on the field", RightBlueNonSolo},
     {"Left Red Non Solo \n\nA left side red alliance routine that doesn't rely on being the only robot on the field", LeftRedNonSolo},
     {"Right Red Non Solo \n\nA right side red alliance routine that doesn't rely on being the only robot on the field", RightRedNonSolo},
@@ -366,7 +366,7 @@ void opcontrol() {
       DetectColor color = get_color();
 
       // CHANGE THIS COLOR IF NEEDED
-      if (color == RED) {
+      if (color == BLUE) {
         reject_timer = REJECT_TIME;
         intakecolorsort.move(-direction);
       }
